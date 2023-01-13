@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>My App</title>
+  </head>
+  <body>
+    <div
+      class="container h-100 d-flex justify-content-center align-items-center"
+    >
+      <form
+        action="/submit"
+        method="post"
+        class="text-center border border-light p-5 form rounded"
+      >
+        <p class="h4 mb-4">Enter your information</p>
+
+        <div class="form-group text-left">
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            value="Joe"
+          />
+        </div>
+
+        <div class="form-group text-left">
+          <label for="lastName">Last Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Enter your last name"
+            value="Sims"
+          />
+        </div>
+
+        <div class="form-group text-left">
+          <label for="workflowId">Workflow ID:</label>
+          <input
+            type="text"
+            value="c1945da2-0f77-45d0-a58e-532b8eca3109"
+            class="form-control"
+            id="workflowId"
+            name="workflowId"
+            placeholder="Enter a workflow ID"
+          />
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
