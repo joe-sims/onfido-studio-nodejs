@@ -9,7 +9,7 @@ This is a Node.js application that uses the Onfido API to create an applicant, g
 ## Installation
 1. Clone the repository to your local machine
 ```
-git clone https://github.com/<your-username>/onfido-nodejs-app.git
+git clone https://github.com/<your-username>/onfido-studio-nodejs.git
 ```
 
 2. Install the necessary dependencies
