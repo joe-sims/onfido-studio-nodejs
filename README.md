@@ -36,7 +36,7 @@ npm start
 
 ## Note
 - It is recommended to exclude the node_modules folder and the .env file in the .gitignore file.
-- You need to replace <your-api-token> and <your-username> with your Onfido API token and GitHub username respectively.
+- You need to replace `<your-api-token>` and `<your-username>` with your Onfido API token and GitHub username respectively.
 
 ## Contribute
 If you would like to contribute to the development of this project, please fork the repository and make a pull request.
