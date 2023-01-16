@@ -1,5 +1,5 @@
 # README
-This is a Node.js application that uses the Onfido API to create an applicant and generate an SDK token. The application allows users to input their first name, last name and workflow id, and then initialises the SDK on the page.
+This is a Node.js application that uses the Onfido API to create an applicant, generate an SDK token, and create a new workflow run Id. The application allows users to input their first name, last name and workflow id, and then initialises the SDK on the page.
 
 ## Requirements
 - Node.js
