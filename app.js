@@ -1,22 +1,21 @@
-require('dotenv').config();
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-const ejs = require('ejs');
+const ejs = require("ejs");
 const { Onfido, Region, OnfidoApiError } = require("@onfido/api");
 const onfido = new Onfido({
   apiToken: process.env.ONFIDO_API_TOKEN,
-  region: Region.EU
+  region: Region.EU,
 });
 
+app.set("view engine", "ejs");
 
-app.set('view engine', 'ejs');
-
-app.get('/', (req, res) => {
-  res.render('form');
+app.get("/", (req, res) => {
+  res.render("form");
 });
 
-app.post('/submit', async (req, res) => {
+app.post("/submit", async (req, res) => {
   try {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
@@ -24,30 +23,32 @@ app.post('/submit', async (req, res) => {
 
     const applicant = await onfido.applicant.create({
       firstName: firstName,
-      lastName: lastName, 
+      lastName: lastName,
     });
     const applicantId = applicant.id;
 
     const generateSdkToken = await onfido.sdkToken.generate({
       applicantId: applicantId,
-      referrer: "*://*/*"
+      referrer: "*://*/*",
     });
 
     const workflowRun = await onfido.workflowRun.create({
       applicantId: applicant.id,
-      workflowId: workflowId
+      workflowId: workflowId,
     });
 
     const workflowRunId = workflowRun.id;
 
-    res.render('index', { 
-      sdkToken: generateSdkToken, 
-      workflowRunId: workflowRunId 
+    res.render("index", {
+      sdkToken: generateSdkToken,
+      workflowRunId: workflowRunId,
     });
   } catch (error) {
     if (error instanceof OnfidoApiError) {
       console.log(error.message);
       console.log(error.type);
+      console.log(error.statusCode); // Add this line
+      console.log(error.body); // Add this line
       console.log(error.isClientError());
     } else {
       console.log(error.message);
