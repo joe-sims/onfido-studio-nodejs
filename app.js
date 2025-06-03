@@ -29,7 +29,7 @@ app.post("/submit", async (req, res) => {
     });
     const applicantId = applicant.id;
 
-    const generateSdkToken = await onfido.sdkToken.generate({
+    const sdkTokenResponse = await onfido.sdkToken.generate({
       applicantId: applicantId,
       referrer: "*://*/*",
     });
@@ -41,10 +41,10 @@ app.post("/submit", async (req, res) => {
 
     const workflowRunId = workflowRun.id;
 
-    res.render("index", {
-      sdkToken: generateSdkToken,
-      workflowRunId: workflowRunId,
-    });
+      res.render("index", {
+        sdkToken: sdkTokenResponse.token,
+        workflowRunId: workflowRunId,
+      });
   } catch (error) {
     if (error instanceof OnfidoApiError) {
       console.log(error.message);
